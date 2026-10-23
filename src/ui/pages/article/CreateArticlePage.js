@@ -56,6 +56,21 @@ export class CreateArticlePage {
     });
   }
 
+  async removeTag(tag) {
+    await this.step(`Remove the '${tag}' tag`, async () => {
+      const tagItem = this.page.locator('.tag-default', { hasText: tag });
+      await tagItem.locator('i').click();
+    });
+  }
+
+  async removeTags(tags) {
+    await this.step(`Remove tags`, async () => {
+      for (let i = 0; i < tags.length; i++) {
+        await this.removeTag(tags[i]);
+      }
+    });
+  }
+
   async submitCreateArticleForm(article) {
     await this.step(`Submit the 'Create Article' form`, async () => {
       await this.fillTitleField(article.title);

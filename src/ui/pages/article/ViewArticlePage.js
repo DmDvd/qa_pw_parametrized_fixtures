@@ -5,6 +5,8 @@ export class ViewArticlePage {
     this.page = page;
     this.userId = userId;
     this.articleTitleHeader = page.getByRole('heading');
+    this.followButton = page.getByRole('button', 
+      { name: /Follow/ }).first();
   }
 
   authorLinkInArticleHeader(username) {
@@ -28,6 +30,12 @@ export class ViewArticlePage {
       await this.page.goto(url);
     });
   }
+
+  async clickFollowAuthorButton() {
+  await this.step(`Click the 'Follow' author button`, async () => {
+    await this.followButton.click();
+  });
+}
 
   async assertArticleTitleIsVisible(title) {
     await this.step(`Assert the article has correct title`, async () => {
@@ -54,6 +62,14 @@ export class ViewArticlePage {
     await this.step(`Assert the article has correct tags`, async () => {
       for (let i = 0; i < tags.length; i++) {
         await expect(this.tagListItem(tags[i])).toBeVisible();
+      }
+    });
+  }
+
+  async assertArticleTagsAreNotVisible(tags) {
+    await this.step(`Assert the article has correct tags`, async () => {
+      for (let i = 0; i < tags.length; i++) {
+        await expect(this.tagListItem(tags[i])).toBeHidden();
       }
     });
   }
