@@ -18,7 +18,7 @@ export class EditArticlePage {
   async clickEditArticleButton() {
     await this.step(`Click the 'Edit Article' button`, async () => {
       await this.editArticleButton.click();
-    })
+    });
   }
 
   async clickUpdateArticleButton() {

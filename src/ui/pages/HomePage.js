@@ -27,8 +27,8 @@ export class HomePage {
   async clickYourFeedTab() {
     await this.step(`Click the 'Your Feed' tab`, async () => {
       await this.yourFeedTab.click();
-  });
-}
+    });
+  }
 
   async assertYourFeedTabIsVisible() {
     await this.step(`Assert the 'Your Feed' tab is visible`, async () => {
@@ -41,7 +41,7 @@ export class HomePage {
       await expect(this.page.getByRole('heading', 
         { name: title })).toBeVisible({
       timeout: 2000,
+      });
     });
-  });
-}
+  }
 }

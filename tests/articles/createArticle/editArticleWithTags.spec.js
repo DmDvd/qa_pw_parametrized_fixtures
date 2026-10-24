@@ -1,6 +1,6 @@
+import { test } from '../../_fixtures/fixtures';
 import { signUpUser } from '../../../src/ui/actions/auth/signUpUser';
 import { generateNewArticleData } from '../../../src/common/testData/generateNewArticleData';
-import { test } from '../../_fixtures/fixtures';
 
 const testParameters = [
   { tagsNumber: 1, testNameEnding: 'one tag' },
@@ -21,7 +21,6 @@ testParameters.forEach(({ tagsNumber, testNameEnding}) => {
         createArticlePage,
         viewArticlePage,
         editArticlePage,
-        articleWithoutTags,
         logger,
     }) => {
       const article = generateNewArticleData(logger, tagsNumber);
@@ -66,5 +65,5 @@ testParameters.forEach(({ tagsNumber, testNameEnding}) => {
 
         await viewArticlePage.assertArticleTagsAreVisible(article.tags);
       });
-  });
+    });
 });
