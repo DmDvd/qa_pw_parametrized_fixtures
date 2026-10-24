@@ -38,4 +38,4 @@ test('User can see in your feeds articles from two different users', async ({
     await homePage.assertArticleIsVisibleInFeed(articleWithoutTags.title);
     await homePage.assertArticleIsVisibleInFeed(secondArticle.title);
   }).toPass({ timeout: 30000 });
-})
+});
